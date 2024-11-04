@@ -7,7 +7,10 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    strategy:
+      matrix:
+        os: [windows-2022, windows-2019, ubuntu-24.04, ubuntu-22.04, macos-15, macos-14]
+    runs-on: ${{ matrix.os }}
 
     steps:
     - name: Set up Python 3.11
